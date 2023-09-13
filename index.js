@@ -15,10 +15,10 @@ app.get("/", async (req, res) => {
   try {
     const response = await axios.get("https://bored-api.appbrewery.com/random");
     const result = response.data;
-    res.render(__dirname + "index.ejs", { data: result });
+    res.render(__dirname + "/views/index.ejs", { data: result });
   } catch (error) {
     console.error("Failed to make request:", error.message);
-    res.render(__dirname + "index.ejs", {
+    res.render(__dirname + "/views/index.ejs", {
       error: error.message,
     });
   }
