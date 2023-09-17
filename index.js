@@ -16,6 +16,7 @@ app.get("/", async (req, res) => {
     const response = await axios.get("http://www.boredapi.com/api/activity/");
     const result = response.data;
     result.type = result.type[0].toUpperCase() + result.type.slice(1);
+    if (result.type === "Diy")  result.type = result.type.toUpperCase();
     res.render(__dirname + "/views/index.ejs", { data: result });
   } catch (error) {
     console.error("Failed to make request:", error.message);
@@ -30,6 +31,7 @@ app.post("/", async (req, res) => {
     const response = await axios.get(`http://www.boredapi.com/api/activity?type=${req.body.type}`);
     const result = response.data;
     result.type = result.type[0].toUpperCase() + result.type.slice(1);
+    if (result.type === "Diy")  result.type = result.type.toUpperCase();
     res.json(result);
   } catch (error) {
     console.error("Failed to make request:", error.message);
