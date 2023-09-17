@@ -13,8 +13,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", async (req, res) => {
   try {
-    const response = await axios.get("https://bored-api.appbrewery.com/random");
+    const response = await axios.get("http://www.boredapi.com/api/activity/");
     const result = response.data;
+    result.type = result.type[0].toUpperCase() + result.type.slice(1);
     res.render(__dirname + "/views/index.ejs", { data: result });
   } catch (error) {
     console.error("Failed to make request:", error.message);
@@ -26,10 +27,10 @@ app.get("/", async (req, res) => {
 
 app.post("/", async (req, res) => {
   try{
-    const response = await axios.get(`https://bored-api.appbrewery.com/filter?type=${req.body.type}&participants=${req.body.participants}`);
-    const data = response.data;
-    const random = Math.floor(Math.random() * data.length);
-    res.json(data[random]);
+    const response = await axios.get(`http://www.boredapi.com/api/activity?type=${req.body.type}`);
+    const result = response.data;
+    result.type = result.type[0].toUpperCase() + result.type.slice(1);
+    res.json(result);
   } catch (error) {
     console.error("Failed to make request:", error.message);
     res.json(error);

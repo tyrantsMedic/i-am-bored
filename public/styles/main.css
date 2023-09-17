@@ -35,13 +35,12 @@ h1 {
 .form {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 80px;
+  grid-template-columns: 1fr 1fr;
   grid-column-gap: 10px;
 }
 .form-submit {
   outline: none;
   border: 1px solid rgb(232, 232, 232);
-  background-color: white;
   border-radius: 5px;
   cursor: pointer;
   font-family: monospace;
@@ -94,12 +93,12 @@ h1 {
     height: 40px;
   }
 
-  .form {
+  /* .form {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 10px;
-  }
+  } */
 }
 
 .loading-animation {
